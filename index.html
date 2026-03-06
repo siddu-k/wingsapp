@@ -6,11 +6,45 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src 'self' https:;">
     <title>WINGS Scanner App</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="scanner.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <style>
+        /* Mobile specific styles */
+        body { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            background-color: var(--dark-bg);
+        }
+        .scanner-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 100px 20px 40px;
+            width: 100%;
+        }
+        #reader {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            border: 1px solid var(--gold);
+        }
+        .result-card {
+            width: 100%;
+            max-width: 500px;
+            display: none; /* Hidden by default */
+        }
+        /* Override html5-qrcode styles to match theme */
+        #reader__scan_region { background: transparent; }
+        #reader__dashboard_section_csr span, #reader__dashboard_section_swaplink { display: none !important; }
+        button { margin-top: 10px; }
+    </style>
 </head>
 <body>
     <!-- Simplified Nav -->
