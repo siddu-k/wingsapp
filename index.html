@@ -5,19 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src 'self' https:;">
     <title>WINGS Scanner App</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <style>
+        :root {
+            --text-color: #fdfdfd;
+            --primary-blue: #0b61aa;
+            --light-blue: #3296ea;
+            --primary-orange: #d6790a;
+            --gold: #f2c94c;
+            --dark-bg: #09101a;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --font-heading: 'Cinzel', serif;
+            --font-ui: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         /* Mobile specific styles */
         body { 
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: var(--font-ui);
             min-height: 100vh; 
             display: flex; 
             flex-direction: column; 
-            background-color: var(--dark-bg);
         }
+
+        /* Navigation */
+        .glass-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo {
+            height: 45px !important;
+            width: auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            text-align: center;
+        }
+
+        .glow-button {
+            background: linear-gradient(to bottom, rgba(11, 97, 170, 0.3), rgba(11, 97, 170, 0.8));
+            border: 1px solid rgba(173, 216, 230, 0.6);
+            box-shadow: 0 0 15px rgba(50, 150, 234, 0.4);
+        }
+
+        .btn-blue {
+            background: linear-gradient(135deg, #0b61aa, #1e3c72);
+            border: 1px solid #3296ea;
+        }
+
+        .btn-orange {
+            background: linear-gradient(135deg, #d6790a, #8e4a05);
+            border: 1px solid #f2c94c;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
         .scanner-container {
             flex: 1;
             display: flex;
